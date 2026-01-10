@@ -1,0 +1,47 @@
+first import all libs
+then convert data in df
+choose one algo(RF)
+traintest split
+fit and check r2_score for this rf
+then check linear regression score 
+lin_reg score < RF score
+to make RF more better add fine tuning of parameters, updating n_estimators etc.., and seeing the change in results
+before rf score:0.77, after tuning 0.79
+now feature engineering
+after adding new features, re-train the model and see metrics, they may increase 0.02
+after that check feature importance,which feature the model is using/considering the most, by creating df of feature_importances_df
+plot a graph of feat importance
+
+Next-final thing is Error analysis
+
+create a df in which there are only columns that are required for getting residuals/Error
+Actualprice,predicted_price, error,absolute_eror,medincome
+now!, new feature is added income per occupant = medincome/averageoccupants
+retrain the model 
+now the mse:0.37 and R2 score is 0.79! two 0.02 increment 
+but when we tuned by updating n-estimators the r2 was 0.79(idc)
+BUT BIGGG BUGG!!
+500k actual price and predicted_price is 200k? error is 300k!!!
+and 160k house ko 350k predict! 
+bhot bada error
+HERE COMES NEW CONCEPT CALLED LOG
+Learning......
+Log makes the scale small
+1.0 - log(0)
+2.0 - 0.69
+3.0 - 1.10
+4.0 - 1.39
+5.0 - 1.61
+new model in Log 
+r2 score: 0.8434921197352481
+MAE_log: 0.09631234761077569
+MAE ($): 0.30635713273574855
+RMSE ($): 0.5534953773390963
+serious IMPROVEMENT!! 79% to 84% r2 score and mae is also decreased to 9%
+converted the prices to dollars
+Now ipynb to .py time, time for creating a flask api
+created streamlit app used api in the application
+Successfully predicted the price for given data
+📥 RECEIVED DATA: {'MedInc': 7.5, 'HouseAge': 19, 'AveRooms': 6.0, 'AveBedrms': 2.2, 'Population': 1200, 'AveOccup': 3.0, 'Latitude': 34.88, 'Longitude': -118.42}
+predictd price:  339,825.20
+DONE-PROJECT COMPLETED Successfully 
