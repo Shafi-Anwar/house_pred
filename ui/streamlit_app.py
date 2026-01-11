@@ -4,7 +4,6 @@ import json
 import time
 st.set_page_config(
     page_title="",
-    page_icon="🏡",
     layout="centered",
     initial_sidebar_state="expanded"
 )
@@ -54,11 +53,11 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.title("🏡 California House Price Predictor")
+st.title("California House Price Predictor")
 st.caption("Powered by Random Forest with Feature Engineering • R² Score: 0.84")
 
 with st.sidebar:
-    st.header("⚙️ Configuration")
+    st.header("Configuration")
     
     api_url = st.text_input(
         "API Endpoint",
@@ -90,7 +89,7 @@ with st.sidebar:
                 st.error("Cannot connect to API")
 col1, col2 = st.columns([3, 1])
 with col1:
-    st.markdown("### 📝 Enter House Features")
+    st.markdown("### Enter House Features")
 with col2:
     try:
         response = requests.get(api_url.replace("/predict", "/health"), timeout=2)
@@ -211,7 +210,7 @@ if predict_btn:
                 st.code(response.text)
                 
         except requests.exceptions.ConnectionError:
-            st.error("🔌 Connection Failed - Make sure Flask API is running!")
+            st.error("Connection Failed - Make sure Flask API is running!")
             st.info(f"Your API should be running at: `{api_url}`")
             st.code("python app.py  # Run this in your terminal")
             
@@ -222,10 +221,9 @@ if predict_btn:
             st.error(f" Unexpected Error: {str(e)}")
 st.divider()
 
-with st.expander("ℹ About This Model"):
+with st.expander(" About This Model"):
     st.markdown("""
-    ### 🏆 Model Highlights
-    
+    ### 
     **Feature Engineering:**
     - **Income per Occupant**: Most important feature
     - **Distance to Coast**: Geographic premium
@@ -244,4 +242,4 @@ with st.expander("ℹ About This Model"):
     - `GET /features` - List of all features
     """)
 
-st.caption("Built with 🧠 using Streamlit + Flask | Model: RandomForest (R² 0.84) | Shafi - Data scientist/ML Engineer")
+st.caption("Built with  using Streamlit + Flask | Model: RandomForest (R² 0.84) | Shafi -learning  Data scientist/ML engineer ")
